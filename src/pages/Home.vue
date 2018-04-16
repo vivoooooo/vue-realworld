@@ -66,20 +66,19 @@
 </div>
 </template>
 <script>
-import { getArticles } from '../api/conduit';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
   methods: {
   },
-  async created() {
-    const { data: { articles } } = await getArticles();
-    this.articles = articles;
+  computed: {
+    ...mapGetters({
+      articles: 'getArticles',
+    }),
   },
-  data() {
-    return {
-      articles: null,
-    };
+  created() {
+    this.$store.dispatch('getArticlesRequest');
   },
 };
 </script>
