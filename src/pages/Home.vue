@@ -1,5 +1,5 @@
 <template>
-<div class="home-page">
+<div class="home-page" >
 
   <div class="banner">
     <div class="container">
@@ -22,41 +22,24 @@
             </li>
           </ul>
         </div>
-
-        <div class="article-preview">
-          <div class="article-meta">
-            <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
-            <div class="info">
-              <a href="" class="author">Eric Simons</a>
-              <span class="date">January 20th</span>
+        <div class="article-wrapper" v-for="article in articles" :key="article.slug">
+          <div class="article-preview">
+            <div class="article-meta">
+              <a href="profile.html"><img :src="article.author.image"></a>
+              <div class="info">
+                <a href="" class="author">{{article.author.username}}</a>
+                <span class="date">J{{article.createdAt}}</span>
+              </div>
+              <button class="btn btn-outline-primary btn-sm pull-xs-right">
+                <i class="ion-heart"></i>{{article.favoritesCount}}
+              </button>
             </div>
-            <button class="btn btn-outline-primary btn-sm pull-xs-right">
-              <i class="ion-heart"></i> 29
-            </button>
+            <a href="" class="preview-link">
+              <h1>{{article.title}}</h1>
+              <p>{{article.description}}</p>
+              <span>Read more...</span>
+            </a>
           </div>
-          <a href="" class="preview-link">
-            <h1>How to build webapps that scale</h1>
-            <p>This is the description for the post.</p>
-            <span>Read more...</span>
-          </a>
-        </div>
-
-        <div class="article-preview">
-          <div class="article-meta">
-            <a href="profile.html"><img src="http://i.imgur.com/N4VcUeJ.jpg" /></a>
-            <div class="info">
-              <a href="" class="author">Albert Pai</a>
-              <span class="date">January 20th</span>
-            </div>
-            <button class="btn btn-outline-primary btn-sm pull-xs-right">
-              <i class="ion-heart"></i> 32
-            </button>
-          </div>
-          <a href="" class="preview-link">
-            <h1>The song you won't ever stop singing. No matter how hard you try.</h1>
-            <p>This is the description for the post.</p>
-            <span>Read more...</span>
-          </a>
         </div>
       </div>
 
