@@ -58,7 +58,6 @@
             <span>Read more...</span>
           </a>
         </div>
-
       </div>
 
       <div class="col-md-3">
@@ -83,4 +82,22 @@
 
 </div>
 </template>
+<script>
+import { getArticles } from '../api/conduit';
+
+export default {
+  name: 'Home',
+  methods: {
+  },
+  async created() {
+    const { data: { articles } } = await getArticles();
+    this.articles = articles;
+  },
+  data() {
+    return {
+      articles: null,
+    };
+  },
+};
+</script>
 
